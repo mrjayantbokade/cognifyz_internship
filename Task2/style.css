@@ -8,27 +8,30 @@ body {
 
 #logo {
     display: block;
-    margin: 20px auto;
-    width: 200px;
+    margin: 10px auto;
+    width: 200px; /* Adjust size as needed */
 }
 
 #heading {
+    color: #0056b3;
     text-align: center;
 }
 
 form {
+
     max-width: 400px;
-    font-size: 1rem;
     margin: 20px auto;
     background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
+    scroll-behavior: smooth;
+    padding: 40px;
+    border-radius: 50px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 form label {
     display: block;
     margin-bottom: 5px;
+    font-size: 16px; /* Adjust font size as needed */
 }
 
 form input[type="text"],
@@ -39,27 +42,39 @@ form input[type="date"] {
     padding: 8px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 7px;
     box-sizing: border-box;
+    font-size: 16px; /* Adjust font size as needed */
 }
 
 button[type="submit"] {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: navy;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     color: #fff;
     cursor: pointer;
+    font-size: 16px; /* Adjust font size as needed */
 }
 
 button[type="submit"]:hover {
     background-color: #0056b3;
+    border-radius: 30px;
 }
 
 /* Media queries for responsiveness */
-@media (max-width: 600px) {
+@media (max-width: 480px) {
     form {
         width: 80%;
+    }
+
+    form label,
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="number"],
+    form input[type="date"],
+    button[type="submit"] {
+        font-size: 14px;
     }
 }
