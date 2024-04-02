@@ -107,3 +107,11 @@ button[type="submit"]:hover {
 .middle-section {
     margin-top: 100px;
 }
+
+a {
+    text-decoration: none;
+    color: #0056b3;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-right: 40px;
+}
