@@ -11,28 +11,24 @@ let tempStorage = {};
 app.set('view engine', 'ejs');
 
 app.post('/submit-form', (req, res) => {
-    const { name, email, sem, duration } = req.body;
-    if (!name || !email || !sem || !duration) {
+    const { email, password } = req.body;
+    if ( !email || !password) {
         return res.status(400).send('Invalid data provided.');
     }
 
-    console.log(`Name: ${name}`);
-    console.log(`Email: ${email}`);
-    console.log(`Semester: ${sem}`);
-    console.log(`Duration: ${duration}`);
     tempStorage = { ...req.body };
     console.log('Stored data:', tempStorage);
 
     res.status(200);
-    res.render('status', { name });
+    res.render('signup');
 });
 
-app.get('/about', (req, res) => {
-    res.render('status');
+app.get('/signup', (req, res) => {
+    res.render('signup');
 });
 app.use((req, res) => {
     if (res.statusCode === 200) {
-        res.render('status');
+        res.render('signup');
     }
 });
 const PORT = process.env.PORT || 3000;

@@ -1,42 +1,19 @@
 document.getElementById('registrationForm').onsubmit = function (event) {
-    var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
-    var sem = document.getElementById('semid').value;
-    var duration = document.getElementById('durationid').value;
-
-
-    if (name === '') {
-        alert('Please enter your name.');
-        event.preventDefault();
-    }
+    var password = document.getElementById('password').value;
+    var btn = document.getElementById('btn');
 
     if (email === '') {
         alert('Please enter your email.');
         event.preventDefault();
+        return;
     }
 
-    if (sem === '') {
-        alert('Please enter your semester.');
+    if (!password.match(/[a-zA-Z]/) || !password.match(/[0-9]/)) {
+        alert('Password must contain both letters and numbers.');
         event.preventDefault();
+        btn.style.backgroundColor = 'red';
+        return;
     }
 
-    if (duration === '') {
-        alert('Please enter your duration.');
-        event.preventDefault();
-    }
-
-
-    if(sem > 7){
-        alert('Semester should be less than 8');
-        event.preventDefault();
-    }
-
-    if (duration > 6){
-        alert('We dont provide internships longer than 6 Months');
-        event.preventDefault();
-    }
-}
-
-
-
-
+};
