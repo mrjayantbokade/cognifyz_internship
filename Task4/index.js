@@ -10,7 +10,7 @@ let tempStorage = {};
 
 app.set('view engine', 'ejs');
 
-app.post('/submit-form', (req, res) => {
+app.post('/sign-up', (req, res) => {
     const { email, password } = req.body;
     if ( !email || !password) {
         return res.status(400).send('Invalid data provided.');
