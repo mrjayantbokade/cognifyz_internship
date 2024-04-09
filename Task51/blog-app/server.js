@@ -8,21 +8,16 @@ const port = 3000;
 
 // CORS setup
 const corsOptions = {
-    origin: 'http://localhost:5173',
-    origins: 'http://localhost:5173/Feedback-Form',
+    origin: ['http://localhost:5173', 'http://localhost:5173/feedback-form'],
     credentials: true,
     optionSuccessStatus: 200
 };
 app.use(cors(corsOptions));
 
-// Body parser setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// MongoDB connection
 mongoose.connect('mongodb+srv://mrjayant81:thisIsMyMongoDbPassword@cluster0.tyifqyc.mongodb.net/cognifyz-db', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
 });
 
 // Mongoose model for Feedback collection
@@ -33,11 +28,33 @@ const feedbackSchema = new mongoose.Schema({
 });
 const Feedback = mongoose.model('Feedback', feedbackSchema);
 
-// POST endpoint to create new feedback entry
-app.post('/api/feedback', async (req, res) => {
-    // Handle request body to create a new feedback entry
-    // Example: create feedback entry using `Feedback.create()`
-    // Respond with created feedback entry or error message
+app.post('/api/feedback-form', async (req, res) => {
+    const { feedbackId, fullName, content } = req.body;
+
+    if (!feedbackId || !fullName || !content) {
+        return res.status(400).json({ error: 'Full Name and Content and Feedback ID are required' });
+    }
+
+
+
+    const feedbacksaveresponse = await Feedback.create(
+        {
+            feedbackId,
+            fullName,
+            content
+        }
+    )
+
+    const createdFeedback = await Feedback.findById(feedbacksaveresponse._id);
+
+
+    if (!createdFeedback) {
+        return res.status(500).json({ error: 'Failed to create feedback' });
+    }
+
+
+    return res.status(201)
+        .json({"created feedback": createdFeedback});
 });
 
 // GET endpoint to fetch all feedback entries
