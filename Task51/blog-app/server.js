@@ -1,94 +1,58 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
+
 const app = express();
 const port = 3000;
 
-// Use body-parser middleware to parse incoming request bodies
+// CORS setup
+const corsOptions = {
+    origin: 'http://localhost:5173',
+    origins: 'http://localhost:5173/Feedback-Form',
+    credentials: true,
+    optionSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+
+// Body parser setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Replace <username>, <password>, and <your-database> with your MongoDB details
+// MongoDB connection
 mongoose.connect('mongodb+srv://mrjayant81:thisIsMyMongoDbPassword@cluster0.tyifqyc.mongodb.net/cognifyz-db', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
 
+// Mongoose model for Feedback collection
 const feedbackSchema = new mongoose.Schema({
+    feedbackId: Number,
     fullName: String,
     content: String,
 });
-
 const Feedback = mongoose.model('Feedback', feedbackSchema);
 
-// POST endpoint to create a new feedback entry from form data
+// POST endpoint to create new feedback entry
 app.post('/api/feedback', async (req, res) => {
-    const { fullName, content } = req.body;
-
-    if (!fullName || !content) {
-        return res.status(400).json({ error: 'Full Name and Content are required' });
-    }
-
-
-
-    const feedbacksaveresponse = await Feedback.create(
-        {
-            fullName,
-            content
-        }
-    )
-
-    const createdFeedback = await Feedback.findById(feedbacksaveresponse._id);
-
-
-    if (!createdFeedback) {
-        return res.status(500).json({ error: 'Failed to create feedback' });
-    }
-
-
-    return res.status(201)
-        .json({"created feedback": createdFeedback});
-
+    // Handle request body to create a new feedback entry
+    // Example: create feedback entry using `Feedback.create()`
+    // Respond with created feedback entry or error message
 });
 
-// Start the Express server
+// GET endpoint to fetch all feedback entries
+app.get('/api/feedbackCollection', (req, res) => {
+    // Retrieve all feedback entries using `Feedback.find()`
+    Feedback.find()
+        .then((feedbackEntries) => {
+            res.status(200).json(feedbackEntries); // Send feedback entries as JSON response
+        })
+        .catch((error) => {
+            res.status(500).json({ error: 'Failed to fetch feedback' }); // Handle error
+        });
+});
+
+// Start server
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
-
-
-// Get all Feedback
-// app.get('/api/feedback', (req, res) => {
-//     Feedback.find()
-//         .then((feedbackEntries) => {
-//             res.status(200).json(feedbackEntries);
-//         })
-//         .catch((error) => {
-//             res.status(500).json({ error: 'Failed to fetch feedback' });
-//         });
-// });
-
-// Update a Feedback
-// app.put('/api/feedback/:id', (req, res) => {
-//     const { fullName, content } = req.body;
-//
-//     Feedback.findByIdAndUpdate(req.params.id, { fullName, content }, { new: true })
-//         .then((updatedFeedback) => {
-//             res.status(200).json(updatedFeedback);
-//         })
-//         .catch((error) => {
-//             res.status(500).json({ error: 'Failed to update feedback' });
-//         });
-// });
-
-// // Delete a Feedback
-// app.delete('/api/feedback/:id', (req, res) => {
-//     Feedback.findByIdAndRemove(req.params.id)
-//         .then(() => {
-//             res.status(204).send();
-//         })
-//         .catch((error) => {
-//             res.status(500).json({ error: 'Failed to delete feedback' });
-//         });
-// });
-
