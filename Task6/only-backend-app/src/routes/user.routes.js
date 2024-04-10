@@ -6,8 +6,6 @@ import {
     refreshAccessToken,
     
 } from "../controllers/user.controller.js";
-// import { registerUser, loginUser} from "../controllers/user.controller.js";
-import {ApiError} from "../utils/ApiError.js"
 import { verifyJWT } from "../middlewares/auth.middleware.js"
 
 

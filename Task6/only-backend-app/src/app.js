@@ -34,13 +34,6 @@ app.use(cookieParser()) // uses the browser cookies of the user efficiently
 //routes import 
 import userRouter from "./routes/user.routes.js"
 
-//dont use .get() method 
-//it is used when we do things in one file 
-//but in here we dont seggregation so we need to use
-// .use()  method for this
-
-
-//firstly go to /users then pass control to the userRouter 
 app.use("/api/v1/users", userRouter)
 
 export { app }
