@@ -13,7 +13,7 @@ const internshipsData = [
         position: 'Full-Stack Intern',
         location: 'On-site (India, Nagpur)',
         duration: '3 months',
-        description: 'Industry level task and learning will be given and provided.',
+        description: 'Industry-level tasks and learning will be provided.',
     },
     {
         id: 2,
@@ -21,7 +21,55 @@ const internshipsData = [
         position: 'Backend Developer Intern',
         location: 'Remote',
         duration: '4 months',
-        description: 'Explore the world of how things are working under the hood!',
+        description: 'Explore the world of how things work under the hood!',
+    },
+    {
+        id: 3,
+        company: 'Cognifyz',
+        position: 'Frontend Developer Intern',
+        location: 'On-site (India, Nagpur)',
+        duration: '3 months',
+        description: 'Learn modern frontend technologies and UX/UI design principles.',
+    },
+    {
+        id: 4,
+        company: 'Cognifyz',
+        position: 'Data Science Intern',
+        location: 'Remote',
+        duration: '6 months',
+        description: 'Apply data science techniques to solve real-world problems.',
+    },
+    {
+        id: 5,
+        company: 'Cognifyz',
+        position: 'UX/UI Design Intern',
+        location: 'On-site (India, Nagpur)',
+        duration: '3 months',
+        description: 'Gain hands-on experience in user experience and interface design.',
+    },
+    {
+        id: 6,
+        company: 'Cognifyz',
+        position: 'Digital Marketing Intern',
+        location: 'Remote',
+        duration: '3 months',
+        description: 'Learn and apply digital marketing strategies and analytics.',
+    },
+    {
+        id: 7,
+        company: 'Cognifyz',
+        position: 'Software Testing Intern',
+        location: 'On-site (India, Nagpur)',
+        duration: '4 months',
+        description: 'Test and ensure the quality of software products.',
+    },
+    {
+        id: 8,
+        company: 'Cognifyz',
+        position: 'Business Development Intern',
+        location: 'Remote',
+        duration: '3 months',
+        description: 'Assist in business growth initiatives and client relations.',
     },
 
 ];
@@ -60,8 +108,7 @@ function App() {
                         </div>
                     </>
                 ) : (
-                    <h1 style={{marginTop: '50px'}}>Signup or Login to Discover Opportunities</h1>
-                    //add image background here from public/cognifyz-1.png
+                    <h1 style={{marginTop: '50px'}}>Signup or Login to Discover Opportunities from Cognifyz</h1>
                 )}
             </div>
         </div>
