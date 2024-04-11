@@ -1,0 +1,121 @@
+/* Reset default margin and padding */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; /* Example font */
+}
+
+/* Style for the outermost container */
+.outermost-container {
+    position: fixed;
+    width: 100vw;  /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    background-color: black; /* Grey background color (hex code) */
+    display: flex;
+    flex-direction: row; /* Stack children vertically */
+    align-items: stretch; /* Stretch sections vertically */
+}
+
+/* Style for chat history section */
+.chat-history {
+
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 15%; /* 30% height, fixed sizing */
+    padding: 20px;
+    background-color: rgb(29, 28, 28); /* White background color */
+    color: white; /* Dark text color */
+    overflow-y: auto; /* Enable vertical scroll if needed */
+}
+
+input {
+    color: white;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 1.2rem;
+    overflow-x: hidden;
+    font-weight: 400;
+    outline: 1px white solid;
+    border: none;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+    height: 40px;
+    border-radius: 50px;
+}
+
+/* Style for main box section */
+.main-box {
+    flex: 1; /* Take remaining height */
+    padding: 20px;
+    background-color: rgb(34, 32, 32); /* Light grey background color */
+    color: white; /* Dark text color */
+    overflow-y: auto; /* Enable vertical scroll if needed */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Additional styles for responsiveness */
+@media screen and (max-width: 768px) {
+    .chat-history {
+        display: none; /* Hide chat history on smaller screens */
+    }
+    .main-box {
+        flex: 1; /* Take full height on smaller screens */
+    }
+}
+
+/* Style for the first section (top) */
+.first {
+    background-color: transparent;
+    text-align: center;
+    flex: 0 0 auto; /* Fixed size, does not grow or shrink */
+}
+
+/* Style for the second section (middle, takes remaining space) */
+.second {
+    flex: 1; /* Take remaining height */
+}
+
+/* Style for the third section (bottom) */
+.third {
+    gap: 5px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex: 0 0 auto; /* Fixed size, does not grow or shrink */
+    align-self: flex-end; /* Align to bottom of container */
+}
+button {
+    outline: none;
+    background-color: white;
+    border: none;
+    font-size: 1rem;
+    font-weight: 700;
+    width: 70px;
+    padding: 10px;
+    border-radius: 50%;
+
+}
+
+
+#chat-btn {
+    height: 40px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.history {
+    margin-top: 30px;
+    overflow: auto;
+    scrollbar-color: red;
+    position: relative;
+}
+
+.history3 {
+    margin-top: 30px;
+}
+
+.btnclass {
+}
